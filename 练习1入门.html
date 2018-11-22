@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+
+	</head>
+
+	<body>
+		<div id="app">
+			<span v-bind:title="msg">
+				这里是哈喽world
+			</span>
+			<p>{{msg}}</p>
+		</div>
+
+		<div id="app2">
+			<div v-if="flag">11111231213132</div>
+		</div>
+
+		<div id="app-4">
+			<ol>
+				<li v-for="todo in todos">
+					{{ todo.text }}
+				</li>
+			</ol>
+		</div>
+
+		<div id="app-5">
+			<p>{{ message }}</p>
+			<button v-on:click="reverseMessage">Reverse Message</button>
+		</div>
+		
+		<div id="app-6">
+		  	<p>{{ message }}</p>
+		  	<input v-model="message" maxlength="6">
+		</div>
+		
+		
+		
+	</body>
+
+</html>
+<script type="text/javascript">
+	var vm = new Vue({
+		el: "#app",
+		data: {
+			msg: "hello world" + new Date().toLocaleString()
+		}
+	})
+
+	var xm = new Vue({
+		el: "#app2",
+		data: {
+			flag: true
+		}
+	})
+
+	var app4 = new Vue({
+		el: '#app-4',
+		data: {
+			todos: [{
+					text: 'Learn JavaScript'
+				},
+				{
+					text: 'Learn Vue'
+				},
+				{
+					text: 'Build something awesome'
+				}
+			]
+		}
+	})
+
+	var app5 = new Vue({
+		el: '#app-5',
+		data: {
+			message: '好好学习天天向上'
+		},
+		methods: {
+			reverseMessage: function() {
+				this.message = this.message.split('').reverse().join('')
+			}
+		}
+	})
+	
+	var app6 = new Vue({
+		el:"#app-6",
+		data:{
+			message:"123456"
+		}
+	})
+</script>
